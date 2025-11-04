@@ -4,26 +4,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pablo Amundarain · Portfolio</title>
-    <!-- ====== SEO básico ====== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ====== SEO ====== -->
     <meta
       name="description"
       content="Portfolio profesional de Pablo Amundarain: proyectos destacados, habilidades y contacto. Desarrollador Full Stack en formación (Henry)."
     />
     <link rel="canonical" href="https://amundarainp.github.io/" />
+    <!-- Sólo español (auto y regional) -->
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://amundarainp.github.io/"
+    />
+    <link
+      rel="alternate"
+      hreflang="es-AR"
+      href="https://amundarainp.github.io/"
+    />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="Pablo Amundarain" />
     <meta name="theme-color" content="#0b1220" />
 
-    <!-- ====== Iconos / manifest (opcional manifest si lo usás) ====== -->
+    <!-- ====== Iconos / manifest ====== -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link
-      rel="alternate icon"
-      href="/assets/portfolio-preview.png"
-      type="image/png"
-    />
+    <link rel="icon" href="/assets/portfolio-preview.png" type="image/png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- ====== Open Graph (Facebook/LinkedIn/WhatsApp) ====== -->
+    <!-- ====== Open Graph ====== -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Pablo Amundarain · Portfolio" />
     <meta property="og:url" content="https://amundarainp.github.io/" />
@@ -79,38 +87,6 @@
       }
     </script>
 
-    <link rel="canonical" href="https://amundarainp.github.io/" />
-
-    <meta
-      name="description"
-      content="Portfolio de Pablo Amundarain — Full Stack en formación (Henry). HTML · CSS · JS · Node · Express."
-    />
-    <meta name="theme-color" content="#6C63FF" />
-
-    <!-- Favicon (SVG) + fallback -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="alternate icon" href="https://github.com/amundarainp.png" />
-
-    <!-- Manifest PWA -->
-    <link rel="manifest" href="/manifest.webmanifest" />
-
-    <!-- OG / Twitter -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://amundarainp.github.io/" />
-    <meta property="og:title" content="Pablo Amundarain · Portfolio" />
-    <meta
-      property="og:description"
-      content="Desarrollador Full Stack en formación (Henry). HTML · CSS · JS · Node · Express."
-    />
-    <meta property="og:image" content="https://github.com/amundarainp.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Pablo Amundarain · Portfolio" />
-    <meta
-      name="twitter:description"
-      content="Full Stack en formación · Procesos · Transformación Digital."
-    />
-    <meta name="twitter:image" content="https://github.com/amundarainp.png" />
-
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -119,7 +95,7 @@
       rel="stylesheet"
     />
 
-    <!-- Aplica el tema ANTES de pintar para evitar flash -->
+    <!-- Aplica tema antes de pintar -->
     <script>
       (() => {
         const key = "pa-theme";
@@ -133,7 +109,7 @@
     <style>
       :root {
         --bg: #fbfbfd;
-        --card: #ffffff;
+        --card: #fff;
         --ink: #0f172a;
         --muted: #475569;
         --line: #e5e7eb;
@@ -160,7 +136,7 @@
       }
       html[data-theme="light"] {
         --bg: #fbfbfd;
-        --card: #ffffff;
+        --card: #fff;
         --ink: #0f172a;
         --muted: #475569;
         --line: #e5e7eb;
@@ -221,7 +197,7 @@
         text-decoration: none;
         border: 1px solid transparent;
         font-weight: 600;
-        transition: 0.2s ease;
+        transition: 0.2s;
       }
       .btn.primary {
         background: var(--accent);
@@ -355,7 +331,7 @@
         display: flex;
         flex-direction: column;
         gap: 0.7rem;
-        transition: 0.25s ease;
+        transition: 0.25s;
       }
       .card:hover {
         transform: translateY(-3px);
@@ -368,6 +344,8 @@
         color: var(--muted);
         margin: 0 0 0.4rem;
       }
+
+      /* Footer */
       footer {
         border-top: 1px dashed var(--line);
         padding: 26px 0 60px;
@@ -382,19 +360,41 @@
         bottom: 24px;
         transform: translateX(-50%) translateY(20px);
         opacity: 0;
-        /* ✅ colores con contraste en ambos temas */
         background: var(--accent);
         color: #fff;
         padding: 0.6rem 0.9rem;
         border-radius: 10px;
         border: 1px solid color-mix(in oklab, var(--ink) 15%, transparent);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        transition: 0.25s ease;
+        transition: 0.25s;
         z-index: 50;
       }
       #toast.show {
         opacity: 1;
         transform: translateX(-50%) translateY(0);
+      }
+
+      /* ===== Contacto centrado ===== */
+      #contacto {
+        text-align: center;
+      }
+      #contacto .lead {
+        max-width: 60ch;
+        margin: 0.5rem auto 1.25rem;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+      #contacto .row {
+        display: flex;
+        justify-content: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      #contacto .meta {
+        margin: 0.25rem auto 0;
+        color: #94a3b8;
+        opacity: 0.9;
       }
     </style>
   </head>
@@ -410,7 +410,14 @@
             <span>Pablo Amundarain</span>
           </div>
           <div class="nav-actions">
-            <a class="btn ghost" href="/index-en.html" hreflang="en">EN</a>
+            <a
+              class="btn ghost"
+              href="/index-en.html"
+              hreflang="en"
+              lang="en"
+              aria-label="View English version"
+              >EN</a
+            >
             <a class="btn ghost" href="#proyectos">Proyectos</a>
             <button
               id="theme-btn"
@@ -515,6 +522,7 @@
           Trabajos del bootcamp y prácticas personales. Código prolijo y foco en
           UX.
         </p>
+
         <div class="grid cols-3 mt-2">
           <!-- PM2 · Películas -->
           <article class="card">
@@ -531,15 +539,12 @@
                 rel="noopener"
                 >Código</a
               >
-              <!-- Si publicás la demo en Pages: -->
               <a
                 class="btn primary"
                 href="https://amundarainp.github.io/PM2copia/"
                 target="_blank"
                 rel="noopener"
                 >Demo</a
-              >
-
               >
             </div>
           </article>
@@ -558,8 +563,6 @@
                 rel="noopener"
                 >Código</a
               >
-              <!-- Si tenés demo online, agregala acá -->
-              <!-- <a class="btn primary" href="https://tu-demo..." target="_blank" rel="noopener">Demo</a> -->
             </div>
           </article>
 
@@ -584,16 +587,15 @@
       </div>
     </section>
 
+    <!-- ===== Contacto centrado ===== -->
     <section id="contacto">
-      <div class="wrap" style="text-align: center">
+      <div class="wrap">
         <h2 class="title">Contacto</h2>
         <p class="lead">
           ¿Charlamos? Abierto a propuestas remotas y proyectos desafiantes.
         </p>
-        <div
-          class="row mt-2"
-          style="display: flex; gap: 0.6rem; justify-content: center"
-        >
+
+        <div class="row mt-2">
           <a
             class="btn primary"
             href="mailto:amundarainp@gmail.com?subject=Contacto%20desde%20Portfolio&body=Hola%20Pablo,%20te%20escribo%20porque..."
@@ -617,9 +619,8 @@
             >GitHub</a
           >
         </div>
-        <p class="mt-2" style="color: #94a3b8">
-          Argentina · Zona La Plata · Disponibilidad remota
-        </p>
+
+        <p class="meta">Argentina · Zona La Plata · Disponibilidad remota</p>
       </div>
     </section>
 
@@ -632,10 +633,10 @@
     <div id="toast" role="status" aria-live="polite">Email copiado</div>
 
     <script>
-      // Año
+      // Año en footer
       document.getElementById("y").textContent = new Date().getFullYear();
 
-      // Toggle de tema (auto → dark → light)
+      // Toggle tema (auto → dark → light)
       (function () {
         const key = "pa-theme";
         const root = document.documentElement;
@@ -652,7 +653,7 @@
         btn.title = "Tema: " + (root.getAttribute("data-theme") || "auto");
       })();
 
-      // Copiar email (fallback si mailto no abre)
+      // Copiar email (con toast visible en claro/oscuro)
       (function () {
         const email = "amundarainp@gmail.com";
         const copyBtn = document.getElementById("copyMail");

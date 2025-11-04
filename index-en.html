@@ -4,36 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pablo Amundarain · Portfolio</title>
-    <!-- ====== Basic SEO ====== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ====== SEO ====== -->
     <meta
       name="description"
-      content="Professional portfolio of Pablo Amundarain: Full Stack Developer in training at Henry. Projects, skills, and contact information."
+      content="Pablo Amundarain's professional portfolio: highlighted projects, skills and contact. Full-Stack Developer in training (Henry)."
     />
-    <link rel="canonical" href="https://amundarainp.github.io/en/" />
+    <link rel="canonical" href="https://amundarainp.github.io/index-en.html" />
+    <link
+      rel="alternate"
+      hreflang="es-AR"
+      href="https://amundarainp.github.io/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://amundarainp.github.io/index-en.html"
+    />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="author" content="Pablo Amundarain" />
     <meta name="theme-color" content="#0b1220" />
 
-    <!-- ====== Icons ====== -->
+    <!-- ====== Icons / manifest ====== -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link
-      rel="alternate icon"
-      href="/assets/portfolio-preview.png"
-      type="image/png"
-    />
+    <link rel="icon" href="/assets/portfolio-preview.png" type="image/png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- ====== Open Graph (Facebook / LinkedIn / WhatsApp) ====== -->
+    <!-- ====== Open Graph ====== -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Pablo Amundarain · Portfolio" />
-    <meta property="og:url" content="https://amundarainp.github.io/en/" />
+    <meta
+      property="og:url"
+      content="https://amundarainp.github.io/index-en.html"
+    />
     <meta
       property="og:title"
-      content="Pablo Amundarain · Full Stack Developer Portfolio"
+      content="Pablo Amundarain · Full-Stack Developer (in training)"
     />
     <meta
       property="og:description"
-      content="Explore my portfolio with featured web development projects, technologies, and contact info."
+      content="Professional portfolio: projects, skills and contact. PM1, PM2 and more."
     />
     <meta
       property="og:image"
@@ -47,11 +57,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Pablo Amundarain · Full Stack Developer Portfolio"
+      content="Pablo Amundarain · Full-Stack Developer (in training)"
     />
     <meta
       name="twitter:description"
-      content="Explore my web development projects, skills, and contact info."
+      content="Professional portfolio: highlighted projects and contact."
     />
     <meta
       name="twitter:image"
@@ -65,7 +75,7 @@
         "@type": "Person",
         "name": "Pablo Amundarain",
         "jobTitle": "Full Stack Developer (in training)",
-        "url": "https://amundarainp.github.io/en/",
+        "url": "https://amundarainp.github.io/index-en.html",
         "image": "https://amundarainp.github.io/assets/portfolio-preview.png",
         "address": {
           "@type": "PostalAddress",
@@ -79,34 +89,34 @@
       }
     </script>
 
-    <meta
-      name="description"
-      content="Pablo Amundarain — Full Stack Developer in training (Henry). HTML · CSS · JS · Node · Express."
-    />
-    <meta name="theme-color" content="#6C63FF" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Apply theme before paint -->
     <script>
       (() => {
-        const k = "pa-theme",
-          s = localStorage.getItem(k);
-        if (s) document.documentElement.setAttribute("data-theme", s);
+        const key = "pa-theme";
+        const saved = localStorage.getItem(key);
+        if (saved === "light" || saved === "dark" || saved === "auto") {
+          document.documentElement.setAttribute("data-theme", saved);
+        }
       })();
     </script>
+
     <style>
       :root {
         --bg: #fbfbfd;
-        --card: #fff;
+        --card: #ffffff;
         --ink: #0f172a;
         --muted: #475569;
         --line: #e5e7eb;
         --accent: #6c63ff;
+        --accent-ink: #2b2a6e;
         --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
         --radius: 18px;
         --pad: clamp(18px, 3vw, 28px);
@@ -128,12 +138,13 @@
       }
       html[data-theme="light"] {
         --bg: #fbfbfd;
-        --card: #fff;
+        --card: #ffffff;
         --ink: #0f172a;
         --muted: #475569;
         --line: #e5e7eb;
         --grad1: #eae9ff;
         --grad2: #f7faff;
+        --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
       }
       html[data-theme="dark"] {
         --bg: #0b1220;
@@ -143,7 +154,9 @@
         --line: #1f2a44;
         --grad1: #1e2248;
         --grad2: #0d1426;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
       }
+
       * {
         box-sizing: border-box;
       }
@@ -167,12 +180,13 @@
             transparent 60%
           ),
           var(--bg);
+        line-height: 1.6;
       }
       a {
         color: inherit;
       }
       .wrap {
-        max-width: 1080px;
+        max-width: var(--maxw);
         margin: 0 auto;
         padding: 0 var(--pad);
       }
@@ -190,9 +204,11 @@
       .btn.primary {
         background: var(--accent);
         color: #fff;
+        box-shadow: 0 4px 14px rgba(108, 99, 255, 0.25);
       }
       .btn.primary:hover {
         transform: translateY(-1px);
+        background: #5a53ff;
       }
       .btn.ghost {
         background: var(--card);
@@ -201,6 +217,7 @@
       .btn.ghost:hover {
         transform: translateY(-1px);
       }
+
       header {
         position: sticky;
         top: 0;
@@ -225,6 +242,7 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
+        box-shadow: var(--shadow);
       }
       .nav-actions {
         display: flex;
@@ -237,6 +255,7 @@
         padding: 0.55rem 0.7rem;
         cursor: pointer;
       }
+
       .hero {
         padding: clamp(48px, 8vw, 110px) 0 56px;
       }
@@ -265,6 +284,26 @@
         box-shadow: var(--shadow);
         padding: clamp(16px, 2.6vw, 26px);
       }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0.8rem 0 0;
+      }
+      .tag {
+        background: #f4f5ff;
+        color: #2b2a6e;
+        padding: 0.45rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        border: 1px solid #e8e9ff;
+      }
+      html[data-theme="dark"] .tag {
+        background: #1c2146;
+        color: #c8cbff;
+        border-color: #2a2f62;
+      }
+
       section {
         padding: 56px 0;
       }
@@ -314,6 +353,50 @@
         color: #94a3b8;
         text-align: center;
       }
+
+      /* Toast */
+      #toast {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%) translateY(20px);
+        opacity: 0;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.6rem 0.9rem;
+        border-radius: 10px;
+        border: 1px solid color-mix(in oklab, var(--ink) 15%, transparent);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        transition: 0.25s ease;
+        z-index: 50;
+      }
+      #toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* ===== Contact (centered) ===== */
+      #contact {
+        text-align: center;
+      }
+      #contact .lead {
+        max-width: 60ch;
+        margin: 0.5rem auto 1.25rem;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+      #contact .row {
+        display: flex;
+        justify-content: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      #contact .meta {
+        margin: 0.25rem auto 0;
+        color: #94a3b8;
+        opacity: 0.9;
+      }
     </style>
   </head>
   <body>
@@ -323,18 +406,18 @@
           <div class="brand">
             <img
               src="https://github.com/amundarainp.png"
-              alt="Profile picture"
+              alt="Pablo Amundarain profile picture"
             />
             <span>Pablo Amundarain</span>
           </div>
           <div class="nav-actions">
-            <a class="btn ghost" href="/" hreflang="es-AR">ES</a>
+            <a class="btn ghost" href="/" hreflang="es-AR" lang="es">ES</a>
             <a class="btn ghost" href="#projects">Projects</a>
             <button
               id="theme-btn"
               class="toggle"
               aria-label="Toggle theme"
-              title="Toggle theme"
+              title="Toggle light/dark"
             >
               🌗
             </button>
@@ -350,8 +433,8 @@
           <h1>Development · Processes · Digital Transformation</h1>
           <p class="sub">
             I'm <strong>Pablo Amundarain</strong>, a
-            <em>Full Stack Developer</em> in training (Soy Henry). I build
-            clear, accessible and maintainable web experiences.
+            <em>Full-Stack Developer</em> in training (Soy Henry). I focus on
+            building clear, accessible and maintainable web experiences.
           </p>
           <div class="btns">
             <a
@@ -369,18 +452,25 @@
               >LinkedIn</a
             >
           </div>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span
+            ><span class="tag">JavaScript</span> <span class="tag">Node</span
+            ><span class="tag">Express</span><span class="tag">Bootstrap</span>
+            <span class="tag">Git · GitHub</span>
+          </div>
         </div>
         <aside class="hero-card" aria-label="Summary">
           <h2 class="title" style="font-size: 1.3rem; margin-bottom: 0.4rem">
             About me
           </h2>
           <p class="lead" style="font-size: 1rem">
-            Background in operations and processes. I turn that experience into
-            simple, performant web solutions focused on business value.
+            I come from operations & processes. Now I turn that background into
+            web solutions with a focus on simplicity, performance and business
+            value.
           </p>
           <div class="mt-2">
-            <strong>Currently:</strong> Soy Henry Bootcamp · PM1/PM2 projects ·
-            Good practices (ESLint/Prettier).
+            <strong>Currently:</strong> Soy Henry bootcamp · PM1/PM2 projects ·
+            Best practices (ESLint/Prettier).
           </div>
         </aside>
       </div>
@@ -388,7 +478,7 @@
 
     <section id="skills">
       <div class="wrap">
-        <h2 class="title">Tech & Stack</h2>
+        <h2 class="title">Tech & stack</h2>
         <p class="lead">
           Effective stack for front and back. Learning daily and documenting
           processes.
@@ -397,19 +487,19 @@
           <div class="card">
             <h3>Frontend</h3>
             <p>
-              Semantic HTML, modern CSS (Flex/Grid), JavaScript, Bootstrap,
+              Semantic HTML, CSS (Flex/Grid), JavaScript, Bootstrap,
               accessibility & responsive.
             </p>
           </div>
           <div class="card">
             <h3>Backend</h3>
             <p>
-              Node.js + Express, routes/controllers, API consumption, error
+              Node.js + Express, routing & controllers, API consumption, error
               handling.
             </p>
           </div>
           <div class="card">
-            <h3>Flow & Quality</h3>
+            <h3>Workflow & Quality</h3>
             <p>
               Git & GitHub, Prettier, ESLint, deploy on GitHub Pages / Netlify,
               clear docs.
@@ -425,7 +515,34 @@
         <p class="lead">
           Bootcamp work and personal practice. Clean code with UX focus.
         </p>
+
         <div class="grid cols-3 mt-2">
+          <!-- PM2 · Movies -->
+          <article class="card">
+            <h3>PM2 · Movies</h3>
+            <p>
+              Dynamic catalog with cards, filters and API consumption. UX and
+              performance focus.
+            </p>
+            <div class="row mt-1">
+              <a
+                class="btn ghost"
+                href="https://github.com/amundarainp/pm2"
+                target="_blank"
+                rel="noopener"
+                >Code</a
+              >
+              <a
+                class="btn primary"
+                href="https://amundarainp.github.io/PM2copia/"
+                target="_blank"
+                rel="noopener"
+                >Demo</a
+              >
+            </div>
+          </article>
+
+          <!-- PM1 · Portfolio -->
           <article class="card">
             <h3>PM1 · Portfolio</h3>
             <p>Module 1 portfolio with local storage and UI helpers.</p>
@@ -439,9 +556,14 @@
               >
             </div>
           </article>
+
+          <!-- Web Template -->
           <article class="card">
             <h3>Web Template</h3>
-            <p>Clean starter: structure, Prettier/ESLint, scripts and utils.</p>
+            <p>
+              Clean base to start projects: structure, Prettier/ESLint, scripts
+              and utilities.
+            </p>
             <div class="row mt-1">
               <a
                 class="btn ghost"
@@ -452,39 +574,29 @@
               >
             </div>
           </article>
-          <article class="card">
-            <h3>My first web</h3>
-            <p>
-              Initial HTML/CSS/JS practice with semantic structure and
-              responsive layout.
-            </p>
-            <div class="row mt-1">
-              <a
-                class="btn ghost"
-                href="https://github.com/amundarainp/mi_primer_web"
-                target="_blank"
-                rel="noopener"
-                >Code</a
-              >
-            </div>
-          </article>
         </div>
       </div>
     </section>
 
+    <!-- =========================
+         Contact (centered)
+         ========================= -->
     <section id="contact">
-      <div class="wrap" style="text-align: center">
+      <div class="wrap">
         <h2 class="title">Contact</h2>
-        <p class="lead">Open to remote roles and challenging projects.</p>
-        <div
-          class="row mt-2"
-          style="display: flex; gap: 0.6rem; justify-content: center"
-        >
+        <p class="lead">
+          Let’s talk! Open to remote opportunities and challenging projects.
+        </p>
+
+        <div class="row mt-2">
           <a
             class="btn primary"
-            href="mailto:amundarainp@gmail.com?subject=Contact%20from%20Portfolio&body=Hi%20Pablo,%20I'm%20reaching%20out%20because..."
+            href="mailto:amundarainp@gmail.com?subject=Contact%20from%20Portfolio&body=Hi%20Pablo,%20I'm%20writing%20because..."
             >Email me</a
           >
+          <button id="copyMail" class="btn ghost" type="button">
+            Copy email
+          </button>
           <a
             class="btn ghost"
             href="https://www.linkedin.com/in/pablo-amundarain-b65b33a9/"
@@ -500,6 +612,8 @@
             >GitHub</a
           >
         </div>
+
+        <p class="meta">Argentina · La Plata area · Remote availability</p>
       </div>
     </section>
 
@@ -509,22 +623,44 @@
       </div>
     </footer>
 
+    <div id="toast" role="status" aria-live="polite">Email copied</div>
+
     <script>
+      // Year
       document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Theme toggle (auto → dark → light)
       (function () {
-        const k = "pa-theme",
-          root = document.documentElement,
-          btn = document.getElementById("theme-btn");
+        const key = "pa-theme";
+        const root = document.documentElement;
+        const btn = document.getElementById("theme-btn");
         const cycle = () => {
           const cur = root.getAttribute("data-theme") || "auto";
           const next =
             cur === "auto" ? "dark" : cur === "dark" ? "light" : "auto";
           root.setAttribute("data-theme", next);
-          localStorage.setItem(k, next);
+          localStorage.setItem(key, next);
           btn.title = "Theme: " + next;
         };
         btn.addEventListener("click", cycle);
         btn.title = "Theme: " + (root.getAttribute("data-theme") || "auto");
+      })();
+
+      // Copy email (fallback if mailto doesn't open)
+      (function () {
+        const email = "amundarainp@gmail.com";
+        const copyBtn = document.getElementById("copyMail");
+        const toast = document.getElementById("toast");
+        copyBtn.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(email);
+            toast.textContent = "Email copied: " + email;
+          } catch {
+            toast.textContent = "Could not copy. Email: " + email;
+          }
+          toast.classList.add("show");
+          setTimeout(() => toast.classList.remove("show"), 1800);
+        });
       })();
     </script>
   </body>
