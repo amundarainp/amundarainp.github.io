@@ -1,0 +1,16 @@
+<!-- /favicon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6C63FF"/>
+      <stop offset="1" stop-color="#8A84FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#g)"/>
+  <g fill="#ffffff">
+    <!-- P -->
+    <path d="M70 188V68h58c24 0 40 14 40 36s-16 36-40 36H98v48H70zm28-72h28c9 0 16-6 16-12s-7-12-16-12H98v24z"/>
+    <!-- A -->
+    <path d="M146 188l38-120h26l38 120h-28l-7-24h-33l-7 24h-27zm43-46h22l-11-38-11 38z"/>
+  </g>
+</svg>

@@ -1,68 +1,494 @@
 <!DOCTYPE html>
 <html lang="es-AR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pablo Amundarain · Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio de Pablo Amundarain — Full Stack en formación (Henry). HTML, CSS, JavaScript, Node, Express."
+    />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="icon"
+      href="https://github.com/amundarainp.png"
+      type="image/png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap"
       rel="stylesheet"
     />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://amundarainp.github.io/" />
+    <meta property="og:title" content="Pablo Amundarain · Portfolio" />
+    <meta
+      property="og:description"
+      content="Desarrollador Full Stack en formación (Henry). HTML · CSS · JS · Node · Express · Transformación Digital."
+    />
+    <meta property="og:image" content="https://github.com/amundarainp.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pablo Amundarain · Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Full Stack Developer en formación · Procesos · Transformación Digital."
+    />
+    <meta name="twitter:image" content="https://github.com/amundarainp.png" />
+
     <style>
+      :root {
+        --bg: #fbfbfd;
+        --card: #ffffff;
+        --ink: #0f172a; /* slate-900 */
+        --muted: #475569; /* slate-600 */
+        --line: #e5e7eb; /* gray-200 */
+        --accent: #6c63ff; /* lavanda elegante */
+        --accent-ink: #2b2a6e;
+        --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+        --radius: 18px;
+        --pad: clamp(18px, 3vw, 28px);
+        --maxw: 1080px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
       body {
-        background: linear-gradient(135deg, #e6ecf0, #f8fafc);
-        color: #333;
-        font-family: "Segoe UI", sans-serif;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        height: 100%;
       }
-      .card {
-        border-radius: 1rem;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        padding: 2rem 3rem;
-        background-color: white;
-        max-width: 480px;
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          sans-serif;
+        color: var(--ink);
+        background: radial-gradient(
+            1200px 600px at 90% -10%,
+            #eae9ff 0%,
+            transparent 60%
+          ),
+          radial-gradient(1000px 500px at -10% 10%, #f7faff 0%, transparent 60%),
+          var(--bg);
+        line-height: 1.6;
       }
-      h1 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+      a {
+        color: inherit;
+      }
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 var(--pad);
       }
       .btn {
-        margin: 0.25rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.75rem 1.1rem;
+        border-radius: 12px;
+        text-decoration: none;
+        border: 1px solid transparent;
+        font-weight: 600;
+        transition: 0.2s ease;
+        box-shadow: 0 4px 14px rgba(108, 99, 255, 0.15);
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: #fff;
+      }
+      .btn.primary:hover {
+        transform: translateY(-1px);
+        background: #5a53ff;
+      }
+      .btn.ghost {
+        background: #fff;
+        border-color: #e7e9f3;
+      }
+      .btn.ghost:hover {
+        transform: translateY(-1px);
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: saturate(140%) blur(8px);
+        background: rgba(255, 255, 255, 0.75);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+        z-index: 10;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-weight: 700;
+      }
+      .brand img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        box-shadow: var(--shadow);
+      }
+      .nav-actions {
+        display: flex;
+        gap: 0.6rem;
+      }
+
+      /* Hero */
+      .hero {
+        padding: clamp(48px, 8vw, 110px) 0 56px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: clamp(22px, 4vw, 48px);
+        align-items: center;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        font-size: clamp(32px, 5.2vw, 54px);
+        line-height: 1.1;
+        margin: 0 0 0.6rem;
+        letter-spacing: 0.3px;
+      }
+      .sub {
+        font-size: clamp(16px, 2.2vw, 18px);
+        color: var(--muted);
+        margin: 0 0 1.2rem;
+      }
+      .hero-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: clamp(16px, 2.6vw, 26px);
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0.8rem 0 0;
+      }
+      .tag {
+        background: #f4f5ff;
+        color: var(--accent-ink);
+        padding: 0.45rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        border: 1px solid #e8e9ff;
+      }
+
+      /* Sections */
+      section {
+        padding: 56px 0;
+      }
+      .title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(24px, 3.6vw, 32px);
+        margin: 0 0 1rem;
+      }
+      .lead {
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      /* Cards grid */
+      .grid {
+        display: grid;
+        gap: clamp(16px, 2.2vw, 24px);
+      }
+      @media (min-width: 880px) {
+        .grid.cols-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: clamp(16px, 2.4vw, 22px);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        transition: 0.25s ease;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+      }
+      .card h3 {
+        font-size: 1.05rem;
+        margin: 0.2rem 0 0.1rem;
+      }
+      .card p {
+        color: var(--muted);
+        margin: 0 0 0.4rem;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px dashed #e6e7ef;
+        padding: 26px 0 60px;
+        color: #6b7280;
+        text-align: center;
+      }
+
+      /* Small helpers */
+      .row {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .mt-1 {
+        margin-top: 0.5rem;
+      }
+      .mt-2 {
+        margin-top: 1rem;
+      }
+      .mt-3 {
+        margin-top: 1.5rem;
+      }
+      .mb-2 {
+        margin-bottom: 1rem;
+      }
+      .center {
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <div class="card">
-      <h1>👋 Hola, soy <strong>Pablo Amundarain</strong></h1>
-      <p class="lead mb-4">
-        Full Stack Developer en formación · Soy Henry 🚀<br />
-        Apasionado por el desarrollo web, la IA y la innovación.
-      </p>
-      <div>
-        <a
-          href="https://github.com/amundarainp"
-          class="btn btn-dark"
-          target="_blank"
-          >GitHub</a
-        >
-        <a
-          href="https://linkedin.com/in/pablo-amundarain-b65b33a9"
-          class="btn btn-primary"
-          target="_blank"
-          >LinkedIn</a
-        >
-        <a href="mailto:amundarainp@gmail.com" class="btn btn-success"
-          >Contacto</a href="gmail.com"
-        >
+    <!-- Header -->
+    <header>
+      <div class="wrap">
+        <nav>
+          <div class="brand">
+            <img
+              src="https://github.com/amundarainp.png"
+              alt="Foto de perfil de Pablo Amundarain"
+            />
+            <span>Pablo Amundarain</span>
+          </div>
+          <div class="nav-actions">
+            <a class="btn ghost" href="#proyectos">Proyectos</a>
+            <a class="btn primary" href="#contacto">Contacto</a>
+          </div>
+        </nav>
       </div>
-      <hr />
-      <p class="small text-muted mb-0">
-        🌐 amundarainp.github.io · Hecho con HTML + Bootstrap
-      </p>
-    </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Desarrollo · Procesos · Transformación Digital</h1>
+          <p class="sub">
+            Soy <strong>Pablo Amundarain</strong>, Desarrollador
+            <em>Full Stack</em> en formación (Soy Henry). Me enfoco en crear
+            experiencias web claras, accesibles y mantenibles.
+          </p>
+          <div class="row">
+            <a
+              class="btn primary"
+              href="https://github.com/amundarainp"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            <a
+              class="btn ghost"
+              href="https://www.linkedin.com/in/pablo-amundarain-b65b33a9/"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+            <a class="btn ghost" href="mailto:amundarainp@gmail.com"
+              >amundarainp@gmail.com</a
+            >
+          </div>
+          <div class="tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span
+            ><span class="tag">JavaScript</span> <span class="tag">Node</span
+            ><span class="tag">Express</span><span class="tag">Bootstrap</span>
+            <span class="tag">Git · GitHub</span>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Resumen">
+          <h2 class="title" style="font-size: 1.3rem; margin-bottom: 0.4rem">
+            Sobre mí
+          </h2>
+          <p class="lead" style="font-size: 1rem">
+            Vengo del mundo de la gestión y procesos. Hoy transformo esa
+            experiencia en soluciones web con foco en simplicidad, performance y
+            valor de negocio.
+          </p>
+          <div class="mt-2">
+            <strong>Actualmente:</strong> Bootcamp **Soy Henry** · Proyectos
+            PM1/PM2 · Prácticas con APIs y buenas prácticas (ESLint/Prettier).
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="wrap">
+        <h2 class="title">Tecnologías y stack</h2>
+        <p class="lead">
+          Trabajo con un stack simple y efectivo para front y back. Aprendiendo
+          cada día y documentando procesos.
+        </p>
+        <div class="grid cols-3 mt-2">
+          <div class="card">
+            <h3>Frontend</h3>
+            <p>
+              HTML semántico, CSS moderno (Flex/Grid), JavaScript (ES2023),
+              Bootstrap, accesibilidad y responsive.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Backend</h3>
+            <p>
+              Node.js + Express, rutas y controladores simples, consumo de APIs,
+              manejo de errores y validaciones.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Flujo & Calidad</h3>
+            <p>
+              Git & GitHub (feature branches), Prettier, ESLint, deploy en
+              GitHub Pages / Netlify, documentación clara.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos">
+      <div class="wrap">
+        <h2 class="title">Proyectos seleccionados</h2>
+        <p class="lead">
+          Algunos trabajos del bootcamp y prácticas personales. Código prolijo,
+          foco en UX y claridad.
+        </p>
+
+        <div class="grid cols-3 mt-2">
+          <article class="card">
+            <h3>PM1 · Portfolio</h3>
+            <p>
+              Portfolio del Módulo 1 con almacenamiento local, componentes
+              simples y helpers de UI.
+            </p>
+            <div class="row mt-1">
+              <a
+                class="btn ghost"
+                href="https://github.com/amundarainp/pm1-portfolio"
+                target="_blank"
+                rel="noopener"
+                >Código</a
+              >
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Plantilla Web</h3>
+            <p>
+              Base limpia para iniciar proyectos: estructura, Prettier/ESLint,
+              scripts y utilidades.
+            </p>
+            <div class="row mt-1">
+              <a
+                class="btn ghost"
+                href="https://github.com/amundarainp/plantilla-web"
+                target="_blank"
+                rel="noopener"
+                >Código</a
+              >
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Mi primer web</h3>
+            <p>
+              Práctica inicial de HTML/CSS/JS con enfoque en semántica y
+              maquetado responsive.
+            </p>
+            <div class="row mt-1">
+              <a
+                class="btn ghost"
+                href="https://github.com/amundarainp/mi_primer_web"
+                target="_blank"
+                rel="noopener"
+                >Código</a
+              >
+            </div>
+          </article>
+        </div>
+
+        <!-- Si más adelante publicás PM2, podés destaparlo y enlazar demo:
+      <div class="card mt-2">
+        <h3>PM2 · Películas</h3>
+        <p>Catálogo dinámico: tarjetas, filtros y consumo de API. Foco en UX y performance.</p>
+        <div class="row mt-1">
+          <a class="btn ghost" href="https://github.com/amundarainp/pm2" target="_blank" rel="noopener">Código</a>
+          <a class="btn primary" href="https://amundarainp.github.io/pm2" target="_blank" rel="noopener">Demo</a>
+        </div>
+      </div>
+      --></div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+      <div class="wrap center">
+        <h2 class="title">Contacto</h2>
+        <p class="lead">
+          ¿Charlamos? Estoy abierto a propuestas remotas y proyectos
+          desafiantes.
+        </p>
+        <div class="row mt-2" style="justify-content: center">
+          <a class="btn primary" href="mailto:amundarainp@gmail.com"
+            >Escribime un mail</a
+          >
+          <a
+            class="btn ghost"
+            href="https://www.linkedin.com/in/pablo-amundarain-b65b33a9/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            class="btn ghost"
+            href="https://github.com/amundarainp"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+        <p class="mt-2" style="color: #94a3b8">
+          Argentina · Zona La Plata · Disponibilidad remota
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        © <span id="y"></span> Pablo Amundarain · Hecho con HTML + CSS
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
