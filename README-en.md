@@ -9,9 +9,15 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-In%20Progress-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Made%20with-%E2%9D%A4-red?style=for-the-badge">
+  <a href="https://github.com/amundarainp/amundarainp.github.io/commits/main">
+    <img src="https://img.shields.io/github/last-commit/amundarainp/amundarainp.github.io?style=for-the-badge&logo=git&logoColor=white" alt="Last Commit">
+  </a>
+  <a href="https://github.com/amundarainp/amundarainp.github.io">
+    <img src="https://img.shields.io/github/repo-size/amundarainp/amundarainp.github.io?style=for-the-badge&color=blue" alt="Repository Size">
+  </a>
+  <a href="https://amundarainp.github.io/en/">
+    <img src="https://img.shields.io/badge/View%20Demo-Portfolio-blue?style=for-the-badge&logo=google-chrome" alt="Live Demo">
+  </a>
 </p>
 
 > Personal website built as a professional portfolio to showcase projects, skills, and experience acquired during the **Full Stack Developer** program at **Henry**.
