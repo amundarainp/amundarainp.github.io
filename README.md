@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/favicon.svg" width="100" alt="Logo del portfolio">
+  <img src="./favicon.svg" width="100" alt="Logo del portfolio">
 </p>
 
 <h1 align="center">🌐 Portfolio Profesional · Pablo Amundarain</h1>
