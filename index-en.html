@@ -1,67 +1,37 @@
 <!DOCTYPE html>
-<html lang="es-AR" data-theme="auto">
+<html lang="en" data-theme="auto">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pablo Amundarain · Portfolio</title>
     <meta
       name="description"
-      content="Portfolio de Pablo Amundarain — Full Stack en formación (Henry). HTML · CSS · JS · Node · Express."
+      content="Pablo Amundarain — Full Stack Developer in training (Henry). HTML · CSS · JS · Node · Express."
     />
     <meta name="theme-color" content="#6C63FF" />
-
-    <!-- Favicon (SVG) + fallback -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="alternate icon" href="https://github.com/amundarainp.png" />
-
-    <!-- Manifest PWA -->
     <link rel="manifest" href="/manifest.webmanifest" />
-
-    <!-- OG / Twitter -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://amundarainp.github.io/" />
-    <meta property="og:title" content="Pablo Amundarain · Portfolio" />
-    <meta
-      property="og:description"
-      content="Desarrollador Full Stack en formación (Henry). HTML · CSS · JS · Node · Express."
-    />
-    <meta property="og:image" content="https://github.com/amundarainp.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Pablo Amundarain · Portfolio" />
-    <meta
-      name="twitter:description"
-      content="Full Stack en formación · Procesos · Transformación Digital."
-    />
-    <meta name="twitter:image" content="https://github.com/amundarainp.png" />
-
-    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Aplica el tema ANTES de pintar para evitar flash -->
     <script>
       (() => {
-        const key = "pa-theme";
-        const saved = localStorage.getItem(key);
-        if (saved === "light" || saved === "dark" || saved === "auto") {
-          document.documentElement.setAttribute("data-theme", saved);
-        }
+        const k = "pa-theme",
+          s = localStorage.getItem(k);
+        if (s) document.documentElement.setAttribute("data-theme", s);
       })();
     </script>
-
     <style>
       :root {
         --bg: #fbfbfd;
-        --card: #ffffff;
+        --card: #fff;
         --ink: #0f172a;
         --muted: #475569;
         --line: #e5e7eb;
         --accent: #6c63ff;
-        --accent-ink: #2b2a6e;
         --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
         --radius: 18px;
         --pad: clamp(18px, 3vw, 28px);
@@ -83,13 +53,12 @@
       }
       html[data-theme="light"] {
         --bg: #fbfbfd;
-        --card: #ffffff;
+        --card: #fff;
         --ink: #0f172a;
         --muted: #475569;
         --line: #e5e7eb;
         --grad1: #eae9ff;
         --grad2: #f7faff;
-        --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
       }
       html[data-theme="dark"] {
         --bg: #0b1220;
@@ -99,9 +68,7 @@
         --line: #1f2a44;
         --grad1: #1e2248;
         --grad2: #0d1426;
-        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
       }
-
       * {
         box-sizing: border-box;
       }
@@ -125,13 +92,12 @@
             transparent 60%
           ),
           var(--bg);
-        line-height: 1.6;
       }
       a {
         color: inherit;
       }
       .wrap {
-        max-width: var(--maxw);
+        max-width: 1080px;
         margin: 0 auto;
         padding: 0 var(--pad);
       }
@@ -149,11 +115,9 @@
       .btn.primary {
         background: var(--accent);
         color: #fff;
-        box-shadow: 0 4px 14px rgba(108, 99, 255, 0.25);
       }
       .btn.primary:hover {
         transform: translateY(-1px);
-        background: #5a53ff;
       }
       .btn.ghost {
         background: var(--card);
@@ -186,7 +150,6 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        box-shadow: var(--shadow);
       }
       .nav-actions {
         display: flex;
@@ -199,7 +162,6 @@
         padding: 0.55rem 0.7rem;
         cursor: pointer;
       }
-
       .hero {
         padding: clamp(48px, 8vw, 110px) 0 56px;
       }
@@ -228,26 +190,6 @@
         box-shadow: var(--shadow);
         padding: clamp(16px, 2.6vw, 26px);
       }
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin: 0.8rem 0 0;
-      }
-      .tag {
-        background: #f4f5ff;
-        color: #2b2a6e;
-        padding: 0.45rem 0.7rem;
-        border-radius: 999px;
-        font-size: 0.9rem;
-        border: 1px solid #e8e9ff;
-      }
-      html[data-theme="dark"] .tag {
-        background: #1c2146;
-        color: #c8cbff;
-        border-color: #2a2f62;
-      }
-
       section {
         padding: 56px 0;
       }
@@ -297,28 +239,6 @@
         color: #94a3b8;
         text-align: center;
       }
-
-      /* Toast */
-      #toast {
-        position: fixed;
-        left: 50%;
-        bottom: 24px;
-        transform: translateX(-50%) translateY(20px);
-        opacity: 0;
-        /* ✅ colores con contraste en ambos temas */
-        background: var(--accent);
-        color: #fff;
-        padding: 0.6rem 0.9rem;
-        border-radius: 10px;
-        border: 1px solid color-mix(in oklab, var(--ink) 15%, transparent);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        transition: 0.25s ease;
-        z-index: 50;
-      }
-      #toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
     </style>
   </head>
   <body>
@@ -328,22 +248,22 @@
           <div class="brand">
             <img
               src="https://github.com/amundarainp.png"
-              alt="Foto de perfil de Pablo Amundarain"
+              alt="Profile picture"
             />
             <span>Pablo Amundarain</span>
           </div>
           <div class="nav-actions">
-            <a class="btn ghost" href="/index-en.html" hreflang="en">EN</a>
-            <a class="btn ghost" href="#proyectos">Proyectos</a>
+            <a class="btn ghost" href="/" hreflang="es-AR">ES</a>
+            <a class="btn ghost" href="#projects">Projects</a>
             <button
               id="theme-btn"
               class="toggle"
-              aria-label="Cambiar tema"
-              title="Cambiar claro/oscuro"
+              aria-label="Toggle theme"
+              title="Toggle theme"
             >
               🌗
             </button>
-            <a class="btn primary" href="#contacto">Contacto</a>
+            <a class="btn primary" href="#contact">Contact</a>
           </div>
         </nav>
       </div>
@@ -352,11 +272,11 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <h1>Desarrollo · Procesos · Transformación Digital</h1>
+          <h1>Development · Processes · Digital Transformation</h1>
           <p class="sub">
-            Soy <strong>Pablo Amundarain</strong>, Desarrollador
-            <em>Full Stack</em> en formación (Soy Henry). Me enfoco en crear
-            experiencias web claras, accesibles y mantenibles.
+            I'm <strong>Pablo Amundarain</strong>, a
+            <em>Full Stack Developer</em> in training (Soy Henry). I build
+            clear, accessible and maintainable web experiences.
           </p>
           <div class="btns">
             <a
@@ -374,25 +294,18 @@
               >LinkedIn</a
             >
           </div>
-          <div class="tags">
-            <span class="tag">HTML</span><span class="tag">CSS</span
-            ><span class="tag">JavaScript</span> <span class="tag">Node</span
-            ><span class="tag">Express</span><span class="tag">Bootstrap</span>
-            <span class="tag">Git · GitHub</span>
-          </div>
         </div>
-        <aside class="hero-card" aria-label="Resumen">
+        <aside class="hero-card" aria-label="Summary">
           <h2 class="title" style="font-size: 1.3rem; margin-bottom: 0.4rem">
-            Sobre mí
+            About me
           </h2>
           <p class="lead" style="font-size: 1rem">
-            Vengo del mundo de la gestión y procesos. Hoy transformo esa
-            experiencia en soluciones web con foco en simplicidad, performance y
-            valor de negocio.
+            Background in operations and processes. I turn that experience into
+            simple, performant web solutions focused on business value.
           </p>
           <div class="mt-2">
-            <strong>Actualmente:</strong> Bootcamp Soy Henry · Proyectos PM1/PM2
-            · Buenas prácticas (ESLint/Prettier).
+            <strong>Currently:</strong> Soy Henry Bootcamp · PM1/PM2 projects ·
+            Good practices (ESLint/Prettier).
           </div>
         </aside>
       </div>
@@ -400,104 +313,83 @@
 
     <section id="skills">
       <div class="wrap">
-        <h2 class="title">Tecnologías y stack</h2>
+        <h2 class="title">Tech & Stack</h2>
         <p class="lead">
-          Stack efectivo para front y back. Aprendiendo cada día y documentando
-          procesos.
+          Effective stack for front and back. Learning daily and documenting
+          processes.
         </p>
         <div class="grid cols-3 mt-2">
           <div class="card">
             <h3>Frontend</h3>
             <p>
-              HTML semántico, CSS (Flex/Grid), JavaScript, Bootstrap,
-              accesibilidad y responsive.
+              Semantic HTML, modern CSS (Flex/Grid), JavaScript, Bootstrap,
+              accessibility & responsive.
             </p>
           </div>
           <div class="card">
             <h3>Backend</h3>
             <p>
-              Node.js + Express, rutas y controladores, consumo de APIs, manejo
-              de errores.
+              Node.js + Express, routes/controllers, API consumption, error
+              handling.
             </p>
           </div>
           <div class="card">
-            <h3>Flujo & Calidad</h3>
+            <h3>Flow & Quality</h3>
             <p>
-              Git & GitHub, Prettier, ESLint, deploy en GitHub Pages / Netlify,
-              documentación clara.
+              Git & GitHub, Prettier, ESLint, deploy on GitHub Pages / Netlify,
+              clear docs.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="proyectos">
+    <section id="projects">
       <div class="wrap">
-        <h2 class="title">Proyectos seleccionados</h2>
+        <h2 class="title">Selected projects</h2>
         <p class="lead">
-          Trabajos del bootcamp y prácticas personales. Código prolijo y foco en
-          UX.
+          Bootcamp work and personal practice. Clean code with UX focus.
         </p>
         <div class="grid cols-3 mt-2">
-          <!-- PM2 · Películas -->
-          <article class="card">
-            <h3>PM2 · Películas</h3>
-            <p>
-              Catálogo dinámico con tarjetas, filtros y consumo de API. Foco en
-              UX y performance.
-            </p>
-            <div class="row mt-1">
-              <a
-                class="btn ghost"
-                href="https://github.com/amundarainp/pm2"
-                target="_blank"
-                rel="noopener"
-                >Código</a
-              >
-              <!-- Si publicás la demo en Pages: -->
-              <a
-                class="btn primary"
-                href="https://amundarainp.github.io/pm2"
-                target="_blank"
-                rel="noopener"
-                >Demo</a
-              >
-            </div>
-          </article>
-
-          <!-- PM1 · Portfolio -->
           <article class="card">
             <h3>PM1 · Portfolio</h3>
-            <p>
-              Portfolio del Módulo 1 con almacenamiento local y helpers de UI.
-            </p>
+            <p>Module 1 portfolio with local storage and UI helpers.</p>
             <div class="row mt-1">
               <a
                 class="btn ghost"
                 href="https://github.com/amundarainp/pm1-portfolio"
                 target="_blank"
                 rel="noopener"
-                >Código</a
+                >Code</a
               >
-              <!-- Si tenés demo online, agregala acá -->
-              <!-- <a class="btn primary" href="https://tu-demo..." target="_blank" rel="noopener">Demo</a> -->
             </div>
           </article>
-
-          <!-- Plantilla Web -->
           <article class="card">
-            <h3>Plantilla Web</h3>
-            <p>
-              Base limpia para iniciar proyectos: estructura, Prettier/ESLint,
-              scripts y utilidades.
-            </p>
+            <h3>Web Template</h3>
+            <p>Clean starter: structure, Prettier/ESLint, scripts and utils.</p>
             <div class="row mt-1">
               <a
                 class="btn ghost"
                 href="https://github.com/amundarainp/plantilla-web"
                 target="_blank"
                 rel="noopener"
-                >Código</a
+                >Code</a
+              >
+            </div>
+          </article>
+          <article class="card">
+            <h3>My first web</h3>
+            <p>
+              Initial HTML/CSS/JS practice with semantic structure and
+              responsive layout.
+            </p>
+            <div class="row mt-1">
+              <a
+                class="btn ghost"
+                href="https://github.com/amundarainp/mi_primer_web"
+                target="_blank"
+                rel="noopener"
+                >Code</a
               >
             </div>
           </article>
@@ -505,24 +397,19 @@
       </div>
     </section>
 
-    <section id="contacto">
+    <section id="contact">
       <div class="wrap" style="text-align: center">
-        <h2 class="title">Contacto</h2>
-        <p class="lead">
-          ¿Charlamos? Abierto a propuestas remotas y proyectos desafiantes.
-        </p>
+        <h2 class="title">Contact</h2>
+        <p class="lead">Open to remote roles and challenging projects.</p>
         <div
           class="row mt-2"
           style="display: flex; gap: 0.6rem; justify-content: center"
         >
           <a
             class="btn primary"
-            href="mailto:amundarainp@gmail.com?subject=Contacto%20desde%20Portfolio&body=Hola%20Pablo,%20te%20escribo%20porque..."
-            >Escribime un mail</a
+            href="mailto:amundarainp@gmail.com?subject=Contact%20from%20Portfolio&body=Hi%20Pablo,%20I'm%20reaching%20out%20because..."
+            >Email me</a
           >
-          <button id="copyMail" class="btn ghost" type="button">
-            Copiar email
-          </button>
           <a
             class="btn ghost"
             href="https://www.linkedin.com/in/pablo-amundarain-b65b33a9/"
@@ -538,56 +425,31 @@
             >GitHub</a
           >
         </div>
-        <p class="mt-2" style="color: #94a3b8">
-          Argentina · Zona La Plata · Disponibilidad remota
-        </p>
       </div>
     </section>
 
     <footer>
       <div class="wrap">
-        © <span id="y"></span> Pablo Amundarain · Hecho con HTML + CSS
+        © <span id="y"></span> Pablo Amundarain · Built with HTML + CSS
       </div>
     </footer>
 
-    <div id="toast" role="status" aria-live="polite">Email copiado</div>
-
     <script>
-      // Año
       document.getElementById("y").textContent = new Date().getFullYear();
-
-      // Toggle de tema (auto → dark → light)
       (function () {
-        const key = "pa-theme";
-        const root = document.documentElement;
-        const btn = document.getElementById("theme-btn");
+        const k = "pa-theme",
+          root = document.documentElement,
+          btn = document.getElementById("theme-btn");
         const cycle = () => {
           const cur = root.getAttribute("data-theme") || "auto";
           const next =
             cur === "auto" ? "dark" : cur === "dark" ? "light" : "auto";
           root.setAttribute("data-theme", next);
-          localStorage.setItem(key, next);
-          btn.title = "Tema: " + next;
+          localStorage.setItem(k, next);
+          btn.title = "Theme: " + next;
         };
         btn.addEventListener("click", cycle);
-        btn.title = "Tema: " + (root.getAttribute("data-theme") || "auto");
-      })();
-
-      // Copiar email (fallback si mailto no abre)
-      (function () {
-        const email = "amundarainp@gmail.com";
-        const copyBtn = document.getElementById("copyMail");
-        const toast = document.getElementById("toast");
-        copyBtn.addEventListener("click", async () => {
-          try {
-            await navigator.clipboard.writeText(email);
-            toast.textContent = "Email copiado: " + email;
-          } catch {
-            toast.textContent = "No se pudo copiar. Email: " + email;
-          }
-          toast.classList.add("show");
-          setTimeout(() => toast.classList.remove("show"), 1800);
-        });
+        btn.title = "Theme: " + (root.getAttribute("data-theme") || "auto");
       })();
     </script>
   </body>
